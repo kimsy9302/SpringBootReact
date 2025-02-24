@@ -1,0 +1,198 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var result = product.uploadFileNames.filter((i) => i !== "test.jpg");
+      //   console.log(result);
+      //   var product2 = { ...product, result };
+      //   console.log(product2);
+      //   console.log("test.jpg" !== "test2.jpg");
+
+      var product = {
+        uploadFileNames: ["test.jpg", "test2.jpg", "test3.jpg"],
+        green: { red: [11, 23, 45, 78, 99, 100] },
+      };
+
+      var result2 = product.green.red.filter((i) => i > 50);
+      console.log(result2);
+
+      // 1번
+      var product2 = [1, 2, 3, 4, 5];
+      var result3 = product2.map((i) => ({
+        홍길동: [i, i * 10],
+        김: `사랑${i}`,
+      }));
+      console.log(result3);
+
+      // 2번
+      var evenNumbers = product2.filter((i) => i % 2 === 0);
+      var oddNumbers = product2.filter((i) => i % 2 === 1);
+      var result4 = [
+        { 짝수: evenNumbers.map((i) => i * 10) },
+        { 홀수: oddNumbers.map((i) => i * 20) },
+      ];
+      console.log(result4);
+
+      var p = [
+        { a: [1, 3], b: { t: 11 } },
+        { a: [2, 5], b: { t: 23 } },
+        { a: [1, 2], b: { t: -1 } },
+        { a: [6, 7, 8], b: { t: -3 } },
+      ];
+      var result5 = p.map((i) => i.b.t);
+      console.log(result5);
+
+      // 30 출력
+      var p = [[{ a: [20, 30, 40] }]];
+      console.log(p[0][0].a[1]);
+
+      // 함수 호출하여 결과 출력
+      var u = [{ a: (i, j) => i + j }];
+      console.log(u[0].a(1, 2));
+
+      // 배열의 총합
+      var s = [[{ a: [{ a: [1, 2, 3, 4] }] }]];
+      console.log(s[0][0].a[0].a.reduce((sum, i) => sum + i, 0));
+
+      // 함수값을 배열에 저장
+      u = [
+        { a: (i) => i * 5, b: (i) => i * 20 },
+        { a: (i) => i - 5, b: (i) => i - 20 },
+        { a: (i) => i / 5, b: (i) => i / 20 },
+        { a: (i) => i % 5, b: (i) => i % 20 },
+      ];
+      console.log(u.map((i) => ({ a: i.a(1), b: i.b(1) })));
+
+      var arr = [1, 2, 3, 4, 5];
+      var even = arr.filter((i) => i % 2 === 0);
+      var odd = arr.filter((i) => i % 2 === 1);
+
+      var evensum = 0;
+      even.map((i) => {
+        evensum += i;
+      });
+      var oddsum = 0;
+      odd.map((i) => {
+        oddsum += i;
+      });
+      console.log({ 짝수: evensum, 홀수: oddsum });
+
+      // 짝수합 홀수합 구하기
+      var a = { p: [1, 2, 3], q: [2, 3, 4] };
+      var { p, q } = a; // 구조분해할당!
+      var asum = 0;
+      var bsum = 0;
+      for (var i = 0; i < p.length; i++) {
+        if (p[i] % 2 === 0) {
+          asum += p[i];
+        } else bsum += p[i];
+      }
+      for (var i = 0; i < p.length; i++) {
+        if (p[i] % 2 === 1) {
+          asum += q[i];
+        } else bsum += q[i];
+      }
+      console.log({ a: asum, b: bsum });
+
+      const cs = ({ tt, vv }) => {
+        return tt[0] + vv("사랑");
+      };
+      console.log(
+        cs({
+          tt: [1, 2, 3],
+          vv: (v) => {
+            var u = "";
+            for (let i = 0; i < 100; i++) {
+              u += v;
+            }
+            u += "\n믿음";
+            return u;
+          },
+        })
+      );
+
+      const asd = (r) => {
+        const { uvw } = r; // 객체 r에서 uvw의 속성을 빼온다.
+        var oddcnt = 0;
+        var evencnt = 0;
+        for (var i of uvw) {
+          if (i % 2 === 0) {
+            evencnt++;
+          } else {
+            oddcnt++;
+          }
+        }
+        return { 짝: evencnt, 홀: oddcnt };
+      };
+      console.log(asd({ uvw: [1, 2, 3, 4, 5, 6] }));
+
+      const w = (i) => {
+        var sum1 = 0;
+        for (var q of i) {
+          sum1 += q.vv;
+        }
+        return sum1;
+      };
+      console.log(w([{ vv: 1 }, { vv: 2 }, { vv: 3 }]));
+
+      const f = (acc, cur) => {
+        console.log(acc, cur);
+        return acc + cur;
+      };
+      [1, 2, 3, 4, 5, 6].reduce(f, 0);
+
+      const items = [
+        { price: 500, quantity: 5 },
+        { price: 300, quantity: 3 },
+        { price: 700, quantity: 2 },
+      ];
+
+      const total = items.reduce(
+        (acc, cur) => {
+          console.log("acc", acc, "cur", cur);
+          acc.totalPrice += cur.price * cur.quantity;
+          acc.totalQuantity += cur.quantity;
+          return acc;
+        },
+        { totalPrice: 0, totalQuantity: 0 }
+      );
+      console.log(total);
+
+      const initialData = [1, 2, 3, 4, 5].map((no) => ({
+        studentNo: no,
+        math: 0,
+        eng: 0,
+        korea: 0,
+        total: 0,
+        avg: 0,
+        grade: "",
+      }));
+
+      initialData.push([{studentNo:8,math:9,eng:10,korea:20,total:30,avg:10,grade:"수"}]);
+      console.log(initialData)
+      // for(let i=0;i<initialData.length;i++){
+      //   console.log(initialData[i]);
+      // }
+      for(let index=0;index<initialData.length;index++){
+        // console.log(initialData.shift()); // 
+      }
+      for(let index=0;index<initialData.length;index++){
+        // console.log(initialData.pop()); // 
+      }
+
+      var e = {
+        target:{
+          value:50, name: "math"
+        }
+      }
+      const {value, name} = e.target;
+      console.log(value, name);
+
+      
+    </script>
+  </body>
+</html>
