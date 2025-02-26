@@ -1,0 +1,34 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const f = (i, j) => i + j;
+      console.log(f(1, 2));
+
+      // 함수를 변수에 저장 가능
+      // 함수를 다른 함수의 매개변수로 가능
+      // 함수를 다른 함수에서 반환 가능
+      // Closure 실습
+      const g = (i) => {
+        // 고차함수(Higher Order Function)
+        const v = (j) => i + j;
+        return v;
+      };
+      console.log(g(1)(2));
+
+      const mul5 = (i) => i * 5;
+      const mul15 = (i) => i * 15;
+      const mul25 = (i) => i * 25;
+
+      const k = (i, f) => { // i는 변수, f는 함수
+        return f(i);
+      };
+      var result = [mul5, mul15, mul25].map((i) => k(3, i));
+      console.log(result);
+    </script>
+  </body>
+</html>

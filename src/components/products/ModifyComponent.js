@@ -64,7 +64,6 @@ const ModifyComponent = ({ pno }) => {
     // Fetching
     setFetching(true);
     putProduct(pno, formData).then((data) => {
-      // 수정된 부분
       // 수정 처리
       setResult("Modified");
       setFetching(false);
@@ -185,7 +184,7 @@ const ModifyComponent = ({ pno }) => {
           </div>
         </div>
       </div>
-      
+
       <div className="flex justify-end p-4">
         <button
           type="button"

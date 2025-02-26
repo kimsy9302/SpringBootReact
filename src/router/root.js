@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import todoRouter from "./todoRouter";
 import greenRouter from "./greenRouter";
 import productsRouter from "./productsRouter";
+import memberRouter from "./memberRouter";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -36,6 +37,10 @@ const root = createBrowserRouter([
         path:"products",
         element: <Suspense fallback={Loading}><ProductsIndex/></Suspense>,
         children: productsRouter() // 중첩 라우팅의 분리
+    },
+    {
+        path:"member",
+        children: memberRouter()
     }
 ])
 
