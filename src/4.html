@@ -1,0 +1,62 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var array_dictionary = [
+        { a: [1, 2, 3, 4], b: [2, 3, 4, 5] },
+        { a: [11, 12, 13, 14], b: [21, 31, 41, 51] },
+        { a: [13, 26, 378, 421], b: [28, 31, 41, 58] },
+        { a: [16, 288, 311, 423], b: [20, 30, 40, 50] },
+      ];
+
+      var asum = 0;
+      var bsum = 0;
+      
+
+      // 각 a 배열의 합
+      var sum1 = array_dictionary.map((obj) => {
+        var sum = 0;
+        for (var i = 0; i < obj.a.length; i++) {
+          sum += obj.a[i];
+        }
+        return sum;
+      });
+      // a 배열들의 누적합
+      for (var i = 0; i < sum1.length; i++) {
+        asum += sum1[i];
+      }
+      // 각 b 배열의 합
+      var sum2 = array_dictionary.map((obj) => {
+        var sum = 0;
+        for (var i = 0; i < obj.b.length; i++) {
+          sum += obj.b[i];
+        }
+        return sum;
+      });
+      // b 배열들의 누적합
+      for (var i = 0; i < sum2.length; i++) {
+        bsum += sum2[i];
+      }
+
+      console.log({'a': asum, 'b': bsum});
+
+      var sum3 = array_dictionary.map((obj) => {
+        var suma = 0;
+        var sumb = 0;
+        for (var i = 0; i < obj.a.length; i++) {
+          suma += obj.a[i];
+        }
+        for (var i = 0; i < obj.b.length; i++) {
+          sumb += obj.b[i];
+        }
+        return {suma, sumb};
+      });
+      console.log(sum3)
+
+    </script>
+  </body>
+</html>
